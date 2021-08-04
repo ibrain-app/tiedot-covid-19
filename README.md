@@ -1,15 +1,6 @@
-# Covid-T
-## Coronavirus tracker, country data comparison and timeline.
+TIEDOT Analytics
+================
 
-- Features
-  - Global status
-  - Status per country
-  - Status per region
-  - Compare status between countries
-  - Timeline of WHO reports
+## Run the app
 
-### Screenshots
-
-![Global status image](https://github.com/leandroparedes/trackerv2/blob/master/images/main.png)
-
-![Mobile views](https://github.com/leandroparedes/trackerv2/blob/master/images/mobile.png)
+    ]$ npm i && npm start

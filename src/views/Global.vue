@@ -3,7 +3,7 @@
         <div class="text-center">
             <img src="../../images/tiedot.jpeg" alt="tiedot" width="300" height=auto>
             <br><br>
-            <div class="display-1 font-weight-black">COVID-19 ANALYTICS</div>            
+            <div class="display-1 font-weight-black">COVID-19 Analytics</div>            
         </div>
 
         <v-row class="mt-4">
