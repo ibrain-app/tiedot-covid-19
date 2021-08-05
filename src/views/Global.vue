@@ -6,9 +6,15 @@
             <div class="display-1 font-weight-black">COVID-19 Analytics</div>            
         </div>
 
+        <v-divider class="mt-6"></v-divider>
+
+        <div class="headline font-weight-black mt-8 mb-2 text-uppercase">
+            <v-avatar color="#7F0799" size="20" class="mr-1 mb-1"></v-avatar> Global
+        </div>
+
         <v-row class="mt-4">
             <v-col cols="12" sm="6" lg="3">
-                <info-card color="#424242">
+                <info-card color="#7F0799">
                     <template v-slot:title>Total cases</template>
                     <template v-slot:icon>fas fa-globe-americas</template>
                     <template v-slot:count-total>{{ global.totals.cases | formatNumber }}</template>
@@ -79,8 +85,8 @@
 
             <v-col cols="12" sm="6" lg="3">
                 <info-card color="#ff5252">
-                    <template v-slot:title>Deaths</template>
-                    <template v-slot:icon>fas fa-skull-crossbones</template>
+                    <template v-slot:title>Gone</template>
+                    <template v-slot:icon>fas fa-church</template>
                     <template v-slot:count-total>{{ global.totals.deaths | formatNumber }}</template>
                     <template
                         v-if="global.totals.todayDeaths > 0"
@@ -102,48 +108,7 @@
         <v-divider class="mt-6"></v-divider>
 
         <div class="headline font-weight-black mt-8 mb-2 text-uppercase">
-            <v-avatar color="secondary" size="20" class="mr-1 mb-1"></v-avatar> Regions
-        </div>
-
-        <v-row>
-            <v-col
-                cols="12" sm="6" md="3"
-                v-for="(region, index) in regions"
-                :key="index"
-            >
-                <info-card
-                    color="#424242"
-                    @click.native="viewRegion(region.name)"
-                    style="cursor: pointer"
-                >
-                    <template v-slot:title>{{ region.name }}</template>
-                    <template v-slot:subtitle>Cases</template>
-                    <template v-slot:count-total>{{ region.cases | formatNumber }}</template>
-                    <template
-                        v-if="region.todayCases"
-                        v-slot:count-today
-                    >
-                        <span class="error--text">
-                            +{{ region.todayCases | formatNumber }}
-                        </span>
-                    </template>
-                    <template v-slot:additional-info>
-                        <span class="grey--text">
-                            {{ region.active | formatNumber }} active
-                        </span>
-                        <span class="font-weight-bold mx-1">&middot;</span>
-                        <span class="error--text">
-                            {{ region.critical | formatNumber }} critical
-                        </span>
-                    </template>
-                </info-card>
-            </v-col>
-        </v-row>
-
-        <v-divider class="mt-6"></v-divider>
-
-        <div class="headline font-weight-black mt-8 mb-2 text-uppercase">
-            <v-avatar color="error" size="20" class="mr-1 mb-1"></v-avatar> Most affected countries
+            <v-avatar color="#0D2C54" size="20" class="mr-1 mb-1"></v-avatar> Most affected countries
         </div>
 
         <v-row v-if="mostAffectedCountries" class="mb-8">
@@ -153,7 +118,7 @@
                 :key="index"
             >
                 <info-card
-                    color="#ff5252"
+                    color="#0D2C54"
                     @click.native="viewCountry(country.countryInfo.iso2)"
                     style="cursor: pointer"
                 >
@@ -181,6 +146,47 @@
                     >
                         <span class="error--text">
                             {{ Math.round((country.cases * 100) / global.totals.cases) }}% of world total cases
+                        </span>
+                    </template>
+                </info-card>
+            </v-col>
+        </v-row>
+
+        <v-divider class="mt-6"></v-divider>
+
+        <div class="headline font-weight-black mt-8 mb-2 text-uppercase">
+            <v-avatar color="#EE5622" size="20" class="mr-1 mb-1"></v-avatar> Regions
+        </div>
+
+        <v-row>
+            <v-col
+                cols="12" sm="6" md="3"
+                v-for="(region, index) in regions"
+                :key="index"
+            >
+                <info-card
+                    color="#EE5622"
+                    @click.native="viewRegion(region.name)"
+                    style="cursor: pointer"
+                >
+                    <template v-slot:title>{{ region.name }}</template>
+                    <template v-slot:subtitle>Cases</template>
+                    <template v-slot:count-total>{{ region.cases | formatNumber }}</template>
+                    <template
+                        v-if="region.todayCases"
+                        v-slot:count-today
+                    >
+                        <span class="error--text">
+                            +{{ region.todayCases | formatNumber }}
+                        </span>
+                    </template>
+                    <template v-slot:additional-info>
+                        <span class="grey--text">
+                            {{ region.active | formatNumber }} active
+                        </span>
+                        <span class="font-weight-bold mx-1">&middot;</span>
+                        <span class="error--text">
+                            {{ region.critical | formatNumber }} critical
                         </span>
                     </template>
                 </info-card>
